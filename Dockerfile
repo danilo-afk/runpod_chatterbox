@@ -15,7 +15,7 @@ RUN pip install -r requirements.txt
 COPY rp_handler.py /
 
 # Preload multilingual model (downloads ~3.3GB de modelos do HuggingFace)
-RUN python -c "from chatterbox.mtl_tts import ChatterboxMultilingualTTS; model = ChatterboxMultilingualTTS.from_pretrained(device='cuda')"
+RUN python -c "from chatterbox.mtl_tts import ChatterboxMultilingualTTS; model = ChatterboxMultilingualTTS.from_pretrained(device='cpu')"
 
 # Start the container
 CMD ["python3", "-u", "rp_handler.py"]
