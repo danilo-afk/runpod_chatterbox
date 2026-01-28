@@ -1,4 +1,6 @@
-# RunPod Serverless Endpoint for Voice Cloning 
+# RunPod Serverless Endpoint for Voice Cloning
+
+[![Runpod](https://api.runpod.io/badge/danilo-afk/runpod_chatterbox)](https://console.runpod.io/hub/danilo-afk/runpod_chatterbox)
 
 ## Overview
 * REST API
