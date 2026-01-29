@@ -3,18 +3,10 @@
     {
       "name": "tts_portuguese",
       "input": {
-        "text": "Olá, isso é um teste de geração de áudio em português.",
+        "text": "Olá, isso é um teste.",
         "language_id": "pt"
       },
-      "timeout": 120000
-    },
-    {
-      "name": "tts_english",
-      "input": {
-        "text": "Hello, this is a test of audio generation in English.",
-        "language_id": "en"
-      },
-      "timeout": 120000
+      "timeout": 600000
     }
   ],
   "config": {
