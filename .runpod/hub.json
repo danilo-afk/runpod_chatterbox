@@ -5,7 +5,7 @@
   "category": "audio",
   "config": {
     "runsOn": "GPU",
-    "containerDiskInGb": 20,
+    "containerDiskInGb": 40,
     "gpuCount": 1,
     "gpuIds": "NVIDIA GeForce RTX 4090,NVIDIA RTX A6000,NVIDIA L40,NVIDIA RTX A5000",
     "allowedCudaVersions": ["12.8", "12.7", "12.6", "12.5", "12.4"]

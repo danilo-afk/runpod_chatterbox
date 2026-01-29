@@ -100,8 +100,9 @@ def initialize_model():
         return model
 
     print("Initializing ChatterboxMultilingualTTS model...")
+    start = time.time()
     model = ChatterboxMultilingualTTS.from_pretrained(device="cuda")
-    print("Model initialized")
+    print(f"Model initialized in {time.time() - start:.1f}s")
 
 if __name__ == '__main__':
     initialize_model()
