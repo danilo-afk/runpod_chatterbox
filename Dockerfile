@@ -14,10 +14,7 @@ COPY requirements.txt /requirements.txt
 RUN pip install -r requirements.txt
 COPY rp_handler.py /
 
-# Preload: apenas baixa os pesos do modelo (sem importar chatterbox que requer cuda)
-RUN python -c "from huggingface_hub import snapshot_download; snapshot_download('ResembleAI/chatterbox_multilingual', local_dir='/root/.cache/chatterbox_multilingual')"
-
-# Start the container
+# Start the container (modelo será baixado no primeiro boot do worker)
 CMD ["python3", "-u", "rp_handler.py"]
 
 
