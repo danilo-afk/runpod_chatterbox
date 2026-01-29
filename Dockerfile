@@ -14,8 +14,8 @@ COPY requirements.txt /requirements.txt
 RUN pip install -r requirements.txt
 COPY rp_handler.py /
 
-# Preload multilingual model (downloads ~3.3GB de modelos do HuggingFace)
-RUN python -c "from chatterbox.mtl_tts import ChatterboxMultilingualTTS; model = ChatterboxMultilingualTTS.from_pretrained(device='cpu')"
+# Preload: apenas baixa os pesos do modelo (sem importar chatterbox que requer cuda)
+RUN python -c "from huggingface_hub import snapshot_download; snapshot_download('ResembleAI/chatterbox_multilingual', local_dir='/root/.cache/chatterbox_multilingual')"
 
 # Start the container
 CMD ["python3", "-u", "rp_handler.py"]
