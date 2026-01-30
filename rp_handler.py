@@ -99,6 +99,13 @@ def initialize_model():
         print("Model already initialized")
         return model
 
+    # Login no HuggingFace para modelo gated
+    hf_token = os.environ.get("HF_TOKEN")
+    if hf_token:
+        from huggingface_hub import login
+        login(token=hf_token)
+        print("HuggingFace login OK")
+
     print("Initializing ChatterboxMultilingualTTS model...")
     start = time.time()
     model = ChatterboxMultilingualTTS.from_pretrained(device="cuda")
