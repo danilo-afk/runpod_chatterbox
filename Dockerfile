@@ -12,8 +12,9 @@ COPY requirements.txt /requirements.txt
 RUN pip install -r requirements.txt
 
 # Pré-baixa o modelo no build (evita download no runtime)
+ARG HF_TOKEN
 COPY download_model.py /download_model.py
-RUN python3 download_model.py
+RUN HF_TOKEN=${HF_TOKEN} python3 download_model.py
 
 COPY rp_handler.py /
 

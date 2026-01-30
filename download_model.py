@@ -1,6 +1,7 @@
 """Pré-download do modelo ChatterboxMultilingualTTS no build."""
+import os
 from huggingface_hub import snapshot_download
 
-# Baixa todos os arquivos do modelo para o cache local
-snapshot_download("ResembleAI/ChatterboxMultilingualTTS")
+token = os.environ.get("HF_TOKEN")
+snapshot_download("ResembleAI/ChatterboxMultilingualTTS", token=token)
 print("Modelo baixado com sucesso!")
