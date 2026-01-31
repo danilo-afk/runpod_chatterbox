@@ -106,6 +106,12 @@ def initialize_model():
         login(token=hf_token)
         print("HuggingFace login OK")
 
+    # Usa cache do RunPod se disponível
+    cache_dir = "/runpod-volume/huggingface-cache/hub"
+    if os.path.exists(cache_dir):
+        os.environ["HF_HOME"] = cache_dir
+        print(f"Using RunPod cache: {cache_dir}")
+
     print("Initializing ChatterboxMultilingualTTS model...")
     start = time.time()
     model = ChatterboxMultilingualTTS.from_pretrained(device="cuda")
