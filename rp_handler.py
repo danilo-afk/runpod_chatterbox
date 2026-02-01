@@ -11,6 +11,8 @@ model = None
 output_filename = "output.wav"
 
 def handler(event):
+    global model
+
     job_input = event['input']
     text = job_input.get('text') or job_input.get('prompt')
     language_id = job_input.get('language_id', 'pt')
@@ -20,6 +22,11 @@ def handler(event):
         return {"error": "Campo 'text' é obrigatório"}
 
     print(f"Request: text='{text[:80]}...', lang={language_id}")
+
+    # Lazy load: carrega modelo só no primeiro request
+    if model is None:
+        print("Lazy loading model on first request...")
+        initialize_model()
 
     try:
         # Gera áudio com Chatterbox Multilingual
@@ -118,5 +125,6 @@ def initialize_model():
     print(f"Model initialized in {time.time() - start:.1f}s")
 
 if __name__ == '__main__':
-    initialize_model()
+    # Não carrega modelo na inicialização - lazy load no primeiro request
+    print("Worker ready - model will load on first request")
     runpod.serverless.start({'handler': handler })
